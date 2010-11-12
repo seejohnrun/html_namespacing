@@ -11,7 +11,11 @@ begin
     gem.description = 'Inserts "class=" attributes within snippets of HTML so CSS and JavaScript can use automatic scopes'
     gem.authors = ['adamh']
     gem.files = FileList['lib/**/*.rb', 'rails/**/*.rb', 'ext/**/*.[ch]', 'lib/html_namespacing/plugin/dom_scan_*.js*'].to_a
-    gem.extensions = ['ext/html_namespacing/extconf.rb']
+    if RUBY_PLATFORM == 'java'
+      gem.add_dependency 'iconv'
+    else
+      gem.extensions = ['ext/html_namespacing/extconf.rb']
+    end
     gem.add_dependency 'glob_fu', '>= 0.0.4'
   end
   Jeweler::GemcutterTasks.new

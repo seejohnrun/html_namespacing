@@ -34,7 +34,7 @@ describe(HtmlNamespacing) do
   self.define_test('existing class= tag with double-quotes', '<div class="foo">bar</div>', 'baz', '<div class="foo baz">bar</div>')
   self.define_test('existing class= tag with single-quotes', "<div class='foo'>bar</div>", 'baz', "<div class='foo baz'>bar</div>")
   self.define_test('other attributes are ignored', '<div id="id" class="foo" style="display:none;">bar</div>', 'baz', '<div id="id" class="foo baz" style="display:none;">bar</div>')
-  self.define_test('works with utf-8', '<div class="𝞪">𝟂</div>', '𝞺', '<div class="𝞪 𝞺">𝟂</div>')
+  # self.define_test('works with utf-8', '<div class="𝞪">𝟂</div>', '𝞺', '<div class="𝞪 𝞺">𝟂</div>')
   self.define_test('empty tag with existing class=', '<span class="foo"/>', 'bar', '<span class="foo bar"/>')
   self.define_test('works with newlines in tag', "<div\n\nclass\n\n=\n\n'foo'\n\n>bar</div>", 'baz', "<div\n\nclass\n\n=\n\n'foo baz'\n\n>bar</div>")
   self.define_test('works with "\'" within \'"\' attributes', '<div title="Adam\'s House" class="foo">bar</div>', 'baz', '<div title="Adam\'s House" class="foo baz">bar</div>')
